@@ -10,7 +10,7 @@ module.exports = {
 };
 
 function find(){
-    return db.select('*').from('users');
+    return db.select('*').from('schemes');
 }
 
 function findById(id){
@@ -30,7 +30,7 @@ function add(scheme){
     return db('schemes')
     .insert(scheme)
     .then(ids => {
-        return getById(ids[0]);
+        return db('schemes').where({ id: ids[0] }).first();;
     });
 }
 
